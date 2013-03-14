@@ -10,10 +10,6 @@ ARGV.each do |a|
   puts "Argument: #{a}"
 end
 
-puts ARGV[0].inspect
-
-puts OneToOneMailer::SMTP_SETTINGS.inspect
-
 User = Struct.new :item_id, :email
 
 def get_users from = 0

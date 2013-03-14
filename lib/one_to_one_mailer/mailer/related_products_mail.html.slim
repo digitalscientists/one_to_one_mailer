@@ -275,7 +275,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
           display: inline-table;
           text-align: left;
           width: 300px;
-          height: 370px;
+          height: 300px;
           border: 5px solid white;
           background: white;
           margin: 8px;
@@ -696,14 +696,6 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                 .imgContainer
                                   .img
                                     img src=product.image_variants.try(:[],:large)
-                              .user-info
-                                a href=users_questions_path(product.owner_name, product.owner_id)
-                                  img src=product.owner_avatar_url
-                                p
-                                  a.user-name href=users_questions_path(product.owner_name, product.owner_id) = product.owner_name
-                                ' rated up
-                                = link_to destination_url do
-                                  span.description= product.description
                           - questions.each do |question|
                             li.question
                               = link_to question_path(question) do
@@ -712,14 +704,6 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                     li
                                       .img
                                         img src=product.image_variants.try(:[], :small)
-                              .user-info
-                                a href=users_questions_path(question.owner_name, question.owner_id)
-                                  img src=question.owner_avatar_url
-                                p
-                                  a.user-name href=users_questions_path(question.owner_name, question.owner_id) = question.owner_name
-                                  '  asked
-                                = link_to question_path(question) do
-                                  span.description= question.text
                     tr height="10"
                       td.headerContent align="left" style="border-top: 1px solid #CCCCCC"
 
