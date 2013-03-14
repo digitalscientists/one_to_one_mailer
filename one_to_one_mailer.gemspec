@@ -14,6 +14,9 @@ Gem::Specification.new do |gem|
   gem.name          = "one_to_one_mailer"
   gem.require_paths = ["lib"]
   gem.version       = OneToOneMailer::VERSION
+
+  gem.add_development_dependency 'capistrano'
+  gem.add_development_dependency 'railsless-deploy'
   
   gem.add_runtime_dependency 'tire'
   gem.add_runtime_dependency 'actionmailer'
