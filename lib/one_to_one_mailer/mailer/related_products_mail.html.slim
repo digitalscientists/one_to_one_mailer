@@ -1,0 +1,737 @@
+doctype html
+html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    css:
+      /* Client-specific Styles */
+      #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
+      body{width:100% !important;} /* Force Hotmail to display emails at full width */
+      body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
+      /* Reset Styles */
+      body{margin:0; padding:0;}
+      img{border:none; font-size:14px; font-weight:bold; outline:none; text-decoration:none; text-transform:capitalize;}
+      #backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
+      /* Template Styles */
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: COMMON PAGE ELEMENTS /\/\/\/\/\/\/\/\/\/\ */
+      body, #backgroundTable{
+        font-family: Helvetica, Arial, Sans-Serif;
+      }
+      h1, .h1{
+        color:#202020;
+        display:block;
+        font-family:Helvetica, Arial, Sans-Serif;
+        font-size:24px;
+        font-weight:bold;
+        line-height:100%;
+        margin-top:0;
+        margin-right:0;
+        margin-bottom:10px;
+        margin-left:0;
+        text-align:left;
+      }
+      h2, .h2{
+        color:#202020;
+        display:block;
+        font-family:Helvetica;
+        font-size:18px;
+        font-weight:bold;
+        line-height:100%;
+        margin-top:0;
+        margin-right:0;
+        margin-bottom:10px;
+        margin-left:0;
+        text-align:left;
+      }
+
+      h3, .h3{
+        color:#333333;
+        display:block;
+        font-family:Helvetica;
+        font-size:20px;
+        font-weight:bold;
+        line-height:100%;
+        margin-top:0;
+        margin-right:0;
+        margin-bottom:10px;
+        margin-left:0;
+        text-align:left;
+      }
+
+      h4, .h4{
+        color:#777777;
+        display:block;
+        font-family:Helvetica;
+        font-size:16px;
+        font-weight:bold;
+        line-height:100%;
+        margin-top:0;
+        margin-right:0;
+        margin-bottom:10px;
+        margin-left:0;
+        text-align:left;
+      }
+
+      h5, .h5{
+        color:#777777;margin: 0;font-size: 14px;
+      }
+      .grey{color:#666;}
+      .px14{font-size:14px; text-decoration:none;}
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: HEADER /\/\/\/\/\/\/\/\/\/\ */
+
+      .headerContent{}
+
+      .headerContent a:link, .headerContent a:visited{
+        color:#336699;
+        font-weight:normal;
+        text-decoration:underline;
+      }
+
+      #headerImage{
+        height:auto;
+        max-width:600px !important;
+      }
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: MAIN BODY /\/\/\/\/\/\/\/\/\/\ */
+
+      .bodyContent div a:link, .bodyContent div a:visited{
+        color:#FF6600 !important;
+        font-weight:normal;
+        text-decoration:none;
+      }
+
+      .bodyContent img{
+        display:inline;
+      }
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: FOOTER /\/\/\/\/\/\/\/\/\/\ */
+
+      #templateFooter{
+        background-color:#F6F6F6;border-top:0;
+      }
+
+      .footerContent{
+        width: 600px
+      }
+      .footerContent div{
+        color:#707070;
+        font-family:Helvetica;
+        font-size:12px;
+        line-height:125%;
+        text-align:left;
+      }
+
+      .footerContent div a:link, .footerContent div a:visited{
+        color:#336699;
+        font-weight:normal;
+        text-decoration:underline;
+      }
+
+      .footerContent img{
+        display:inline;
+      }
+
+      .footerContent p{
+        color: #888888;font-size: 12px;margin: 5px 0 20px;
+      }
+
+      #social{
+         background-color:#FAFAFA;
+         border:0;
+      }
+
+      #social div{
+         text-align:center;
+      }
+
+      #utility{
+         background-color:#FFFFFF;
+         border:0;
+      }
+
+      #utility div{
+         text-align:center;
+      }
+
+      #monkeyRewards img{
+        max-width:190px;
+      }
+
+
+      /* STREAM */
+      #main_content {
+        margin-top: 41px;
+        padding-bottom: 100px;
+        background: #f6f6f6; }
+        #main_content.user-questions {
+          padding-top: 180px; }
+
+      h1.empty {
+        font-size: 1.563em;
+        color: #333333;
+        font-weight: bold;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        display: block;
+        margin-top: 100px; }
+
+      #sub_nav {
+        height: auto;
+        min-height: 130px;
+        z-index: 7; }
+        #sub_nav a {
+          font-size: 16px;
+          font-weight: bold;
+          margin-right: 40px;
+          text-decoration: none; }
+          #sub_nav a.selected {
+            color: #666666;
+            background-image: url(../images/subnav_arrow.png?1363184772);
+            background-position: center 23px;
+            background-repeat: no-repeat;
+            padding-bottom: 16px; }
+        #sub_nav img {
+          float: left;
+          width: auto;
+          max-width: 144px;
+          height: auto;
+          max-height: 144px;
+          margin: 9px 17px 17px 0px; }
+        #sub_nav h1 {
+          font-size: 37px;
+          margin: 0;
+          color: #333333;
+          font-weight: bold;
+          text-transform: none; }
+          #sub_nav h1 .list_title {
+            font-weight: normal;
+            color: #888888;
+            font-size: 30px; }
+            #sub_nav h1 .list_title:before {
+              content: "/";
+              color: #dddddd;
+              margin: 0 10px; }
+        #sub_nav p {
+          font-size: 17px;
+          font-weight: normal;
+          -webkit-font-smoothing: antialiased;
+          color: #666666; }
+          #sub_nav p a.orange {
+            color: #ff6600; }
+          #sub_nav p.friend-info {
+            margin-top: 30px;
+            color: #666666;
+            line-height: 26px; }
+            #sub_nav p.friend-info .follow {
+              color: white;
+              float: left;
+              margin-right: 40px;
+              font-size: 16px;
+              text-decoration: none; }
+            #sub_nav p.friend-info .unfollow {
+              color: white;
+              float: left;
+              margin-right: 40px;
+              font-size: 16px;
+              text-decoration: none; }
+              #sub_nav p.friend-info .unfollow.button {
+                color: #666666; }
+            #sub_nav p.friend-info a.true {
+              text-decoration: underline; }
+
+      hr.shadow {
+        background: transparent url(../images/shadow.png?1363184772) repeat-x left top;
+        border-width: 0;
+        color: transparent;
+        height: 4px;
+        margin: 0; }
+
+      hr.shadow {
+        background: transparent url(../images/shadow.png?1363184772) repeat-x left top;
+        border-width: 0;
+        color: transparent;
+        height: 4px;
+        margin: 0; }
+
+      ul.stream {
+        overflow: hidden;
+        padding: 12px 0 0 0;
+        background: #f6f6f6;
+        text-align: center; }
+        ul.stream > li {
+          display: inline-table;
+          text-align: left;
+          width: 300px;
+          height: 370px;
+          border: 5px solid white;
+          background: white;
+          margin: 8px;
+          position: relative;
+          -moz-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+          -webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3); }
+          ul.stream > li > a {
+            width: 300px;
+            height: 300px;
+            display: block; }
+            ul.stream > li > a:hover {
+              text-decoration: none; }
+          ul.stream > li .header a {
+            cursor: pointer;
+            font-size: 12px;
+            color: #888888; }
+          ul.stream > li .header .title, ul.stream > li .header .actions {
+            margin-top: 10px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddddd; }
+            ul.stream > li .header .title a, ul.stream > li .header .actions a {
+              margin-left: 10px; }
+            ul.stream > li .header .title strong a, ul.stream > li .header .actions strong a {
+              margin-left: 0px;
+              color: black;
+              font-size: 16px; }
+          ul.stream > li .header .actions {
+            margin-top: 9px;
+            padding-left: 9px;
+            padding-bottom: 9px;
+            display: none; }
+            ul.stream > li .header .actions input {
+              font-weight: bold;
+              font-size: 16px;
+              width: 47%;
+              border: 1px solid #dddddd;
+              padding: 0;
+              margin: 0; }
+          ul.stream > li .header.editing .title {
+            display: none; }
+          ul.stream > li .header.editing .actions {
+            display: block; }
+          ul.stream > li .user-info {
+            width: 290px;
+            border-top: 1px solid #dddddd;
+            clear: both;
+            color: #999999;
+            font-size: 0.84em;
+            height: 3.8em;
+            margin: 0 5px;
+            overflow: hidden;
+            padding: 10px 0 0; }
+            ul.stream > li .user-info img {
+              float: left;
+              margin: 0 10px 10px 0; }
+          ul.stream > li .user-name {
+            color: #777777;
+            font-weight: bold; }
+          ul.stream > li .description {
+            color: #333333;
+            font-weight: bold;
+            word-break: break-all;
+            word-break: break-word;
+            -webkit-hypens: auto;
+            -moz-hypens: auto;
+            hypens: auto;
+            -ms-word-break: break-all; }
+          ul.stream > li.user .user-info {
+            border-bottom: 1px solid #dddddd;
+            border-top: 0;
+            height: 100px; }
+            ul.stream > li.user .user-info img {
+              max-width: 75px;
+              max-height: 75px; }
+          ul.stream > li.user .info {
+            max-height: 33px;
+            overflow: hidden; }
+          ul.stream > li.user .description {
+            font-size: 14px;
+            height: 37px;
+            overflow: hidden;
+            padding: 0 7px; }
+          ul.stream > li.user .user-name {
+            color: #333333;
+            font-size: 18px; }
+          ul.stream > li.user .follow, ul.stream > li.user .unfollow {
+            clear: left;
+            float: left;
+            width: 75px;
+            text-align: center;
+            color: white;
+            text-decoration: none; }
+          ul.stream > li.user .unfollow.button {
+            color: #666666; }
+          ul.stream > li.user .followers {
+            float: right;
+            color: #666666;
+            font-weight: bold; }
+          ul.stream > li.question .text {
+            margin: 100px 8px 0 15px; }
+            ul.stream > li.question .text h1 {
+              display: block;
+              font-size: 20px;
+              color: #396cac; }
+            ul.stream > li.question .text p {
+              display: block;
+              font-size: 16px;
+              color: #121212;
+              line-height: 135%;
+              -webkit-font-smoothing: antialiased; }
+          ul.stream > li.question ul {
+            height: 300px; }
+          ul.stream > li.question li {
+            display: block;
+            float: left;
+            width: 92px;
+            height: 92px;
+            margin: 4px;
+            overflow: hidden;
+            position: relative; }
+            ul.stream > li.question li .img {
+              position: absolute;
+              top: -46px;
+              left: -46px;
+              width: 180px;
+              height: 180px;
+              overflow: hidden;
+              line-height: 180px;
+              text-align: center; }
+              ul.stream > li.question li .img img {
+                max-width: 92px;
+                max-height: 92px;
+                vertical-align: middle;
+                border: none; }
+          ul.stream > li.product .imgContainer {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            position: relative; }
+            ul.stream > li.product .imgContainer .img {
+              position: absolute;
+              top: -25px;
+              left: -100px;
+              width: 500px;
+              height: 400px;
+              overflow: hidden;
+              line-height: 400px;
+              text-align: center; }
+              ul.stream > li.product .imgContainer .img img {
+                max-width: 500px;
+                max-height: 500px;
+                min-width: 200px;
+                min-height: 200px;
+                vertical-align: middle;
+                border: none; }
+          ul.stream > li.product .text {
+            display: block;
+            width: 300px;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            text-align: center; }
+            ul.stream > li.product .text p {
+              font-weight: bold;
+              font-size: 15px;
+              color: #396cac;
+              line-height: 30px; }
+          ul.stream > li.nilclass .no-event {
+            height: 337px;
+            font-size: 22px;
+            font-weight: lighter;
+            color: #cccccc;
+            text-align: center;
+            padding: 100px 30px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box; }
+          ul.stream > li.nilclass.list .no-event {
+            height: 362px;
+            padding: 132px 30px; }
+
+      #banner {
+        background: white;
+        padding: 0;
+        border-bottom: 1px solid #cccccc;
+        border-bottom: 1px solid #dddddd;
+        position: relative;
+        top: -1px; }
+        #banner h1 {
+          display: block;
+          padding-top: 60px;
+          margin-right: 36px;
+          margin-bottom: 28px;
+          font-size: 64px;
+          line-height: 100%;
+          color: #3968a7;
+          letter-spacing: -1.5px;
+          text-transform: none;
+          -webkit-font-smoothing: antialiased; }
+        #banner h2 {
+          font-size: 32px;
+          color: #ff6700; }
+          #banner h2 .underline {
+            display: inline-block;
+            border-bottom: 2px solid #ff6700; }
+        #banner .banner-img {
+          position: absolute;
+          bottom: 0;
+          left: -34px;
+          z-index: 50; }
+        #banner .button {
+          position: relative;
+          bottom: 2px; }
+        #banner .centered {
+          height: 494px;
+          position: relative; }
+        #banner ul {
+          margin-bottom: 30px; }
+          #banner ul li {
+            padding-left: 20px;
+            font-size: 32px;
+            line-height: 120%;
+            color: #333333;
+            background: url(../images/bullet.gif?1363184772) no-repeat 0 14px; }
+        #banner a {
+          text-decoration: none; }
+          #banner a.consumer-content {
+            display: block; }
+          #banner a.retailer-content {
+            display: block; }
+        #banner a.toggle-content {
+          display: block;
+          position: absolute;
+          z-index: 100;
+          right: 0;
+          bottom: 12px;
+          width: 207px;
+          height: 48px;
+          background: url(/images/landing/btn-toggle.png?1363184772) no-repeat -1px -56px; }
+        #banner.retailer {
+          background: #fe6700; }
+          #banner.retailer a.toggle-content {
+            background-position: -1px 0px; }
+          #banner.retailer h1 {
+            color: white;
+            padding: 28px 0 0;
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center; }
+            #banner.retailer h1 b {
+              display: inline-block;
+              padding-bottom: 10px;
+              border-bottom: 3px solid white; }
+          #banner.retailer .banner-img {
+            top: auto;
+            left: auto;
+            bottom: 0;
+            right: 10px; }
+        #banner .consumer-content h1 {
+          position: absolute;
+          top: 12px;
+          left: 645px;
+          z-index: 75;
+          width: 380px;
+          font-size: 66px;
+          line-height: 0.9;
+          color: #3968a7; }
+        #banner .consumer-content ul {
+          position: absolute;
+          top: 220px;
+          left: 645px;
+          z-index: 75;
+          width: 330px; }
+          #banner .consumer-content ul li {
+            background: none;
+            font-size: 23px;
+            line-height: 1.25;
+            margin: 0 0 12px 10px;
+            padding-left: 0.75em;
+            text-indent: -1.1em; }
+            #banner .consumer-content ul li:before {
+              content: "-";
+              display: block;
+              margin-right: 5px;
+              width: 20px;
+              float: left; }
+
+      .grey {
+        background: transparent;
+        padding: 27px 0 0; }
+        .grey h2 {
+          height: 60px;
+          font-size: 38px;
+          font-weight: bold;
+          line-height: 60px;
+          color: #666666;
+          text-align: center;
+          background: white;
+          margin-left: 3px;
+          margin-bottom: 7px;
+          -moz-box-shadow: 0 2px 2px rgba(50, 50, 50, 0.25);
+          -webkit-box-shadow: 0 2px 2px rgba(50, 50, 50, 0.25);
+          box-shadow: 0 2px 2px rgba(50, 50, 50, 0.25); }
+          .grey h2 span {
+            display: inline-block; }
+            .grey h2 span:after {
+              content: "\2192";
+              color: #3968a7;
+              font-size: 30px;
+              display: inline-block;
+              margin-left: 8px; }
+          .grey h2 a {
+            display: inline-block;
+            color: #3968a7;
+            line-height: 40px;
+            text-decoration: none;
+            border-bottom: 2px solid #3968a7; }
+        .grey p {
+          font-size: 14px;
+          color: #666666;
+          display: inline; }
+
+      @media screen and (max-width: 600px) {
+        .list_title {
+          font-size: 12px !important; }
+
+        ul.stream > li {
+          margin: 5px 0; }
+
+        #main_content.user-questions {
+          padding-top: 6px;
+          margin-top: 135px; }
+
+        hr.shadow {
+          display: none; }
+
+        #sub_nav {
+          background: white;
+          min-height: inherit; }
+          #sub_nav h1 {
+            line-height: 110%;
+            font-size: 23px; }
+          #sub_nav img {
+            max-width: 75px;
+            max-height: 75px;
+            margin: 5px 8px; }
+          #sub_nav p {
+            line-height: 19px;
+            max-height: 3.3em;
+            overflow: hidden; }
+          #sub_nav p.friend-info {
+            margin-top: 5px;
+            padding: 0;
+            display: inline; }
+            #sub_nav p.friend-info .sub-menu {
+              display: block;
+              clear: both; }
+              #sub_nav p.friend-info .sub-menu a {
+                background: #eee;
+                margin: 0;
+                padding: 3px 0;
+                box-sizing: border-box;
+                border-color: #CCC;
+                border-width: 1px 1px 2px;
+                border-style: solid;
+                width: 25%;
+                display: inline-block;
+                text-align: center;
+                font-size: 10px; }
+                #sub_nav p.friend-info .sub-menu a.true {
+                  background: #DDD; }
+            #sub_nav p.friend-info .follow, #sub_nav p.friend-info .unfollow {
+              margin: 0 0 7px;
+              float: none;
+              display: inline-block; }
+          #sub_nav span.action-links {
+            padding-left: 90px;
+            display: block; } }
+
+      .stream{
+        background-color: none
+      }
+      .stream ul{
+        padding-left: 0
+      }
+      .stream .user-info p{
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .stream .user-info a{
+        text-decoration: none;
+      }
+
+  body leftmargin="0" marginheight="0" marginwidth="0" offset="0" topmargin="0"
+    center
+      table#backgroundTable bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
+        tr
+          td align="center" valign="top"
+            table#templateContainer bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="background-color:#FFFFFF" width="800"
+              tr
+                td
+                  img alt="" border="0" height="30" width="0" src="#{OneToOneMailer::HOST}/images/emails/comment/shim.gif"
+              tr
+                td width="740"
+                  table border="0" cellpadding="0" cellspacing="0" width="675"
+                    tr
+                      td align="right" valign="top"
+                        a href="http://rately.com"
+                          img alt="Rately" border="0" height="28" width="100" src="#{OneToOneMailer::HOST}/images/emails/comment/logo-grey.gif"
+                    tr
+                      td
+                        img alt="" border="0" height="10" width="0" src="#{OneToOneMailer::HOST}/images/emails/comment/shim.gif"
+                    tr height="10"
+                      td.headerContent align="left" style="border-top: 1px solid #CCCCCC"
+                    tr
+                      td
+                        h1 style="margin:0;padding-top:15px;font-weight:normal;color:#FF6600;padding-left: 15px;" Top Products for You
+                        span style="margin:0;font-size:18px;color:#666;padding-left: 15px;"
+                          | Here's the best 20 of the bunch
+                    tr height="10"
+                      td.headerContent align="left" style="border-bottom 1px solid #CCCCCC"
+                    tr
+                      td
+                        ul.stream style="background-color: #fff"
+                          - products.each do |product|
+                            li.product
+                              - destination_url = product.question.present? ? question_path(product.question, :anchor => product) : product.base_url
+                              = link_to destination_url do
+                                .imgContainer
+                                  .img
+                                    img src=product.image_variants.try(:[],:large)
+                              .user-info
+                                a href=users_questions_path(product.owner_name, product.owner_id)
+                                  img src=product.owner_avatar_url
+                                p
+                                  a.user-name href=users_questions_path(product.owner_name, product.owner_id) = product.owner_name
+                                ' rated up
+                                = link_to destination_url do
+                                  span.description= product.description
+                          - questions.each do |question|
+                            li.question
+                              = link_to question_path(question) do
+                                ul
+                                  - question.products.each do |product|
+                                    li
+                                      .img
+                                        img src=product.image_variants.try(:[], :small)
+                              .user-info
+                                a href=users_questions_path(question.owner_name, question.owner_id)
+                                  img src=question.owner_avatar_url
+                                p
+                                  a.user-name href=users_questions_path(question.owner_name, question.owner_id) = question.owner_name
+                                  '  asked
+                                = link_to question_path(question) do
+                                  span.description= question.text
+                    tr height="10"
+                      td.headerContent align="left" style="border-top: 1px solid #CCCCCC"
+
+            table border="0" cellpadding="0" cellspacing="0" style="background-color:#FFFFFF;" width="600"
+              tr
+                td.footerContent style="width:600px;text-align:left;font-family:Helvetica;" valign="top" width="600"
+                  span style="color:#AAAAAA;font-size: 12px;line-height:120%;"
+                    | &copy; #{Time.new.year} - rately is a product of digital scientists, llc.
+                    br
+                    | 21 S. Main St, Alpharetta, GA 30009
+              tr
+                td height="30"
+                  img alt="" border="0" height="30" width="0" src="http://#{OneToOneMailer::HOST}/images/emails/comment/shim.gif"
