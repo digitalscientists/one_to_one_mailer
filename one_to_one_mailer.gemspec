@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "one_to_one_mailer"
   gem.require_paths = ["lib"]
   gem.version       = OneToOneMailer::VERSION
-
+  
   gem.add_runtime_dependency 'tire'
   gem.add_runtime_dependency 'actionmailer'
   gem.add_runtime_dependency 'activesupport'
