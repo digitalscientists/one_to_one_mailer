@@ -6,9 +6,11 @@ module OneToOneMailer
     def related_products_mail user
       related = RelatedItems.for_user(user.item_id)
 
-      products = related[:products] + related[:questions].map{|q| q.products}.flatten.uniq{|p| p.id}
+      products = related[:products]
+      rateups = related[:rateups]
+      questions = related[:questions]
 
-      scope = EmailData.new products[0...20]
+      scope = EmailData.new products, rateups, questions
       mail(:to => user.email, :subject => "Looks from Rately. Featuring: #{related[:categories].join(', ')}") do |format|
         format.html do
           render :text => Slim::Template.new('/Users/admin/Sites/one_to_one_mailer/lib/one_to_one_mailer/mailer/related_products_mail.html.slim', :disable_escape => true).render(scope)
@@ -18,7 +20,7 @@ module OneToOneMailer
   end
 
 
-    class EmailData < Struct.new(:products)
+    class EmailData < Struct.new(:products, :rateups, :questions)
       def question_path question, opts = {}
         path = "#{HOST}/questions/#{question.to_param}"
         path += "##{opts[:anchor]}"if opts[:anchor]
