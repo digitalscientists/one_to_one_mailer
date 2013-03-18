@@ -13,7 +13,7 @@ module OneToOneMailer
       scope = EmailData.new products, rateups, questions
       mail(:to => user.email, :subject => "Looks from Rately. Featuring: #{related[:categories].join(', ')}") do |format|
         format.html do
-          render :text => Slim::Template.new('/Users/admin/Sites/one_to_one_mailer/lib/one_to_one_mailer/mailer/related_products_mail.html.slim', :disable_escape => true).render(scope)
+          render :text => Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', 'related_products_mail.html.slim'), :disable_escape => true).render(scope)
         end
       end
     end
