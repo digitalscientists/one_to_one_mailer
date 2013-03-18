@@ -16,7 +16,7 @@ module OneToOneMailer
       def request_related_products params
         recent_items = recent_product_ids(params)
         popular_items = popular_product_ids(params)
-        Tire.search INDEX, :type => 'products', :size => 30 do
+        Tire.search INDEX, :type => 'products', :size => 50 do
          q = query do
             boolean do
               should { terms :categories, params[:categories] }
@@ -182,17 +182,17 @@ module OneToOneMailer
           :sizes => facets.results.facets['sizes']['terms'].map{|t| t['term']}
         }
 
-        products = request_related_products(params).results.to_a.uniq(&:original_image_url)
+        products = request_related_products(params).results.to_a.uniq(&:original_image_url)[0...20]
         questions = request_related_questions(params).results
         rateups = request_related_rateups(params).results
 
-        if products.size < 10
-          questions = questions[0...(20 - products.size)]
-        elsif questions.size < 10
-          products = products[0...(20 - questions.size)]
+        if rateups.size < 6
+          questions = questions[0...(12 - rateups.size)]
+        elsif questions.size < 6
+          rateups = rateups[0...(12 - questions.size)]
         else
-          products = products[0...10]
-          questions = questions[0...10]
+          rateups = rateups[0...6]
+          questions = questions[0...6]
         end
 
 
