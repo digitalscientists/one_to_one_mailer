@@ -16,7 +16,7 @@ module OneToOneMailer
   INDEX = {
     :development => 'tracked_activities',
     :staging => 'tracked_activities_staging',
-    :production => 'tracked_activities'#_production'
+    :production => 'tracked_activities_production'
   }[env]
   HOST = {
     :development => 'http://localhost:8080',
