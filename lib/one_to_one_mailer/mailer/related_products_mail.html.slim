@@ -172,12 +172,6 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
       }
 
       /* STREAM */
-      #main_content {
-        margin-top: 41px;
-        padding-bottom: 100px;
-        background: #f6f6f6; }
-        #main_content.user-questions {
-          padding-top: 180px; }
 
       h1.empty {
         font-size: 1.563em;
@@ -188,69 +182,6 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
         display: block;
         margin-top: 100px; }
 
-      #sub_nav {
-        height: auto;
-        min-height: 130px;
-        z-index: 7; }
-        #sub_nav a {
-          font-size: 16px;
-          font-weight: bold;
-          margin-right: 40px;
-          text-decoration: none; }
-          #sub_nav a.selected {
-            color: #666666;
-            background-image: url(../images/subnav_arrow.png?1363184772);
-            background-position: center 23px;
-            background-repeat: no-repeat;
-            padding-bottom: 16px; }
-        #sub_nav img {
-          float: left;
-          width: auto;
-          max-width: 144px;
-          height: auto;
-          max-height: 144px;
-          margin: 9px 17px 17px 0px; }
-        #sub_nav h1 {
-          font-size: 37px;
-          margin: 0;
-          color: #333333;
-          font-weight: bold;
-          text-transform: none; }
-          #sub_nav h1 .list_title {
-            font-weight: normal;
-            color: #888888;
-            font-size: 30px; }
-            #sub_nav h1 .list_title:before {
-              content: "/";
-              color: #dddddd;
-              margin: 0 10px; }
-        #sub_nav p {
-          font-size: 17px;
-          font-weight: normal;
-          -webkit-font-smoothing: antialiased;
-          color: #666666; }
-          #sub_nav p a.orange {
-            color: #ff6600; }
-          #sub_nav p.friend-info {
-            margin-top: 30px;
-            color: #666666;
-            line-height: 26px; }
-            #sub_nav p.friend-info .follow {
-              color: white;
-              float: left;
-              margin-right: 40px;
-              font-size: 16px;
-              text-decoration: none; }
-            #sub_nav p.friend-info .unfollow {
-              color: white;
-              float: left;
-              margin-right: 40px;
-              font-size: 16px;
-              text-decoration: none; }
-              #sub_nav p.friend-info .unfollow.button {
-                color: #666666; }
-            #sub_nav p.friend-info a.true {
-              text-decoration: underline; }
 
       hr.shadow {
         background: transparent url(../images/shadow.png?1363184772) repeat-x left top;
@@ -400,12 +331,10 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
             position: relative; }
             ul.stream > li.question li .img {
               position: absolute;
-              top: -46px;
-              left: -46px;
-              width: 180px;
-              height: 180px;
+              width: 100px;
+              height: 100px;
               overflow: hidden;
-              line-height: 180px;
+              line-height: 100px;
               text-align: center; }
               ul.stream > li.question li .img img {
                 max-width: 92px;
@@ -419,12 +348,10 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
             position: relative; }
             ul.stream > li.product .imgContainer .img {
               position: absolute;
-              top: -25px;
-              left: -100px;
-              width: 500px;
-              height: 400px;
+              width: 300px;
+              height: 300px;
               overflow: hidden;
-              line-height: 400px;
+              line-height: 300px;
               text-align: center; }
               ul.stream > li.product .imgContainer .img img {
                 max-width: 500px;
@@ -460,147 +387,9 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
             height: 362px;
             padding: 132px 30px; }
 
-      #banner {
-        background: white;
-        padding: 0;
-        border-bottom: 1px solid #cccccc;
-        border-bottom: 1px solid #dddddd;
-        position: relative;
-        top: -1px; }
-        #banner h1 {
-          display: block;
-          padding-top: 60px;
-          margin-right: 36px;
-          margin-bottom: 28px;
-          font-size: 64px;
-          line-height: 100%;
-          color: #3968a7;
-          letter-spacing: -1.5px;
-          text-transform: none;
-          -webkit-font-smoothing: antialiased; }
-        #banner h2 {
-          font-size: 32px;
-          color: #ff6700; }
-          #banner h2 .underline {
-            display: inline-block;
-            border-bottom: 2px solid #ff6700; }
-        #banner .banner-img {
-          position: absolute;
-          bottom: 0;
-          left: -34px;
-          z-index: 50; }
-        #banner .button {
-          position: relative;
-          bottom: 2px; }
-        #banner .centered {
-          height: 494px;
-          position: relative; }
-        #banner ul {
-          margin-bottom: 30px; }
-          #banner ul li {
-            padding-left: 20px;
-            font-size: 32px;
-            line-height: 120%;
-            color: #333333;
-            background: url(../images/bullet.gif?1363184772) no-repeat 0 14px; }
-        #banner a {
-          text-decoration: none; }
-          #banner a.consumer-content {
-            display: block; }
-          #banner a.retailer-content {
-            display: block; }
-        #banner a.toggle-content {
-          display: block;
-          position: absolute;
-          z-index: 100;
-          right: 0;
-          bottom: 12px;
-          width: 207px;
-          height: 48px;
-          background: url(/images/landing/btn-toggle.png?1363184772) no-repeat -1px -56px; }
-        #banner.retailer {
-          background: #fe6700; }
-          #banner.retailer a.toggle-content {
-            background-position: -1px 0px; }
-          #banner.retailer h1 {
-            color: white;
-            padding: 28px 0 0;
-            margin: 0;
-            font-size: 60px;
-            font-weight: bold;
-            text-align: center; }
-            #banner.retailer h1 b {
-              display: inline-block;
-              padding-bottom: 10px;
-              border-bottom: 3px solid white; }
-          #banner.retailer .banner-img {
-            top: auto;
-            left: auto;
-            bottom: 0;
-            right: 10px; }
-        #banner .consumer-content h1 {
-          position: absolute;
-          top: 12px;
-          left: 645px;
-          z-index: 75;
-          width: 380px;
-          font-size: 66px;
-          line-height: 0.9;
-          color: #3968a7; }
-        #banner .consumer-content ul {
-          position: absolute;
-          top: 220px;
-          left: 645px;
-          z-index: 75;
-          width: 330px; }
-          #banner .consumer-content ul li {
-            background: none;
-            font-size: 23px;
-            line-height: 1.25;
-            margin: 0 0 12px 10px;
-            padding-left: 0.75em;
-            text-indent: -1.1em; }
-            #banner .consumer-content ul li:before {
-              content: "-";
-              display: block;
-              margin-right: 5px;
-              width: 20px;
-              float: left; }
-
-      .grey {
-        background: transparent;
-        padding: 27px 0 0; }
-        .grey h2 {
-          height: 60px;
-          font-size: 38px;
-          font-weight: bold;
-          line-height: 60px;
-          color: #666666;
-          text-align: center;
-          background: white;
-          margin-left: 3px;
-          margin-bottom: 7px;
-          -moz-box-shadow: 0 2px 2px rgba(50, 50, 50, 0.25);
-          -webkit-box-shadow: 0 2px 2px rgba(50, 50, 50, 0.25);
-          box-shadow: 0 2px 2px rgba(50, 50, 50, 0.25); }
-          .grey h2 span {
-            display: inline-block; }
-            .grey h2 span:after {
-              content: "\2192";
-              color: #3968a7;
-              font-size: 30px;
-              display: inline-block;
-              margin-left: 8px; }
-          .grey h2 a {
-            display: inline-block;
-            color: #3968a7;
-            line-height: 40px;
-            text-decoration: none;
-            border-bottom: 2px solid #3968a7; }
-        .grey p {
-          font-size: 14px;
-          color: #666666;
-          display: inline; }
+      ul.stream .product.item {
+        height: 300px
+      }
 
       @media screen and (max-width: 600px) {
         .list_title {
@@ -609,55 +398,9 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
         ul.stream > li {
           margin: 5px 0; }
 
-        #main_content.user-questions {
-          padding-top: 6px;
-          margin-top: 135px; }
-
         hr.shadow {
           display: none; }
 
-        #sub_nav {
-          background: white;
-          min-height: inherit; }
-          #sub_nav h1 {
-            line-height: 110%;
-            font-size: 23px; }
-          #sub_nav img {
-            max-width: 75px;
-            max-height: 75px;
-            margin: 5px 8px; }
-          #sub_nav p {
-            line-height: 19px;
-            max-height: 3.3em;
-            overflow: hidden; }
-          #sub_nav p.friend-info {
-            margin-top: 5px;
-            padding: 0;
-            display: inline; }
-            #sub_nav p.friend-info .sub-menu {
-              display: block;
-              clear: both; }
-              #sub_nav p.friend-info .sub-menu a {
-                background: #eee;
-                margin: 0;
-                padding: 3px 0;
-                box-sizing: border-box;
-                border-color: #CCC;
-                border-width: 1px 1px 2px;
-                border-style: solid;
-                width: 25%;
-                display: inline-block;
-                text-align: center;
-                font-size: 10px; }
-                #sub_nav p.friend-info .sub-menu a.true {
-                  background: #DDD; }
-            #sub_nav p.friend-info .follow, #sub_nav p.friend-info .unfollow {
-              margin: 0 0 7px;
-              float: none;
-              display: inline-block; }
-          #sub_nav span.action-links {
-            padding-left: 90px;
-            display: block; } }
 
   body leftmargin="0" marginheight="0" marginwidth="0" offset="0" topmargin="0"
     center
