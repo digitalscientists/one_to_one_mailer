@@ -182,7 +182,7 @@ module OneToOneMailer
           :sizes => facets.results.facets['sizes']['terms'].map{|t| t['term']}
         }
 
-        products = request_related_products(params).results.to_a.uniq(&:original_image_url)[0...20]
+        products = request_related_products(params).results.to_a.uniq(&:original_image_url)[0...6]
         questions = request_related_questions(params).results
         rateups = request_related_rateups(params).results
 

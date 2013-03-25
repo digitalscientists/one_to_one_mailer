@@ -443,7 +443,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                         ul.stream style="background-color: #fff"
                           - rateups.each do |product|
                             li.product
-                              - destination_url = product.question.present? ? question_path(product.question, :anchor => product) : product.base_url
+                              - destination_url = product.question.present? ? question_path(product.question, :anchor => product.id) : product.base_url
                               = link_to destination_url do
                                 .imgContainer
                                   .img

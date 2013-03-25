@@ -13,7 +13,7 @@ end
 User = Struct.new :item_id, :email
 
 def get_users from = 0
-  Tire.search(OneToOneMailer::INDEX, :type => 'users', :size => 100, :from => from) do
+  Tire.search(OneToOneMailer::INDEX, :type => 'user', :size => 100, :from => from) do
     filter :exists, :field => :email
   end.results
   []
@@ -23,7 +23,7 @@ users = get_users
 i = 1
 while users.size > 0
   users.each do |user|
-    puts "#{user.item_id} - #{user.email}"
+    puts "#{user._id} - #{user.email}"
     OneToOneMailer::Mailer.related_products_mail(user).deliver
   end
   puts i
@@ -32,5 +32,5 @@ while users.size > 0
 end
 
 %w{kostya.malinovskiy@gmail.com kmalyn@softserveinc.com}.each do |mail|
-  OneToOneMailer::Mailer.related_products_mail(User.new('512ccb5b0ca1a106bf00000b', mail)).deliver
+  OneToOneMailer::Mailer.related_products_mail(User.new('513f33f70ca1a116b3000002', mail)).deliver
 end
