@@ -416,64 +416,66 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                         img alt="" border="0" height="10" width="0" src="#{OneToOneMailer::HOST}/images/emails/comment/shim.gif"
                     tr height="10"
                       td.headerContent align="left" style="border-top: 1px solid #CCCCCC"
-                    tr
-                      td
-                        h1 style="margin:0;padding-top:15px;font-weight:normal;color:#FF6600;padding-left: 15px;" Top Products for You
-                        span style="margin:0;font-size:18px;color:#666;padding-left: 15px;"
-                          | Here's the best 20 of the bunch
-                    tr height="10"
-                      td.headerContent align="left" style="border-bottom 1px solid #CCCCCC"
-                    tr
-                      td
-                        ul.stream style="background-color: #fff"
-                          - products.each do |product|
-                            li.product.item
-                              = link_to product.base_url do
-                                .imgContainer
-                                  .img
-                                    img src=product.image_variants.try(:[],:large)
-                    tr
-                      td
-                        span style="margin:0;font-size:18px;color:#666;padding-left: 15px;"
-                          | Here's whats happening on Rately
-                    tr height="10"
-                      td.headerContent align="left" style="border-bottom 1px solid #CCCCCC"
-                    tr
-                      td
-                        ul.stream style="background-color: #fff"
-                          - rateups.each do |product|
-                            li.product
-                              - destination_url = product.question.present? ? question_path(product.question, :anchor => product.id) : product.base_url
-                              = link_to destination_url do
-                                .imgContainer
-                                  .img
-                                    img src=product.image_variants.try(:[],:large)
-                              .user-info
-                                a href=users_questions_path(product.owner_name, product.owner_id)
-                                  img src=product.owner_avatar_url
-                                p
-                                  a.user-name href=users_questions_path(product.owner_name, product.owner_id) = product.owner_name
-                                ' rated up
+                    - if products.any?
+                      tr
+                        td
+                          h1 style="margin:0;padding-top:15px;font-weight:normal;color:#FF6600;padding-left: 15px;" Top Products for You
+                          span style="margin:0;font-size:18px;color:#666;padding-left: 15px;"
+                            | Here's the best 6 of the bunch
+                      tr height="10"
+                        td.headerContent align="left" style="border-bottom 1px solid #CCCCCC"
+                      tr
+                        td
+                          ul.stream style="background-color: #fff"
+                            - products.each do |product|
+                              li.product.item
+                                = link_to product.base_url do
+                                  .imgContainer
+                                    .img
+                                      img src=product.image_variants.try(:[],:large)
+                    - if rateups.any? || questions.any?
+                      tr
+                        td
+                          span style="margin:0;font-size:18px;color:#666;padding-left: 15px;"
+                            | Here's whats happening on Rately
+                      tr height="10"
+                        td.headerContent align="left" style="border-bottom 1px solid #CCCCCC"
+                      tr
+                        td
+                          ul.stream style="background-color: #fff"
+                            - rateups.select{|r| !r.product.nil? }.each do |product|
+                              li.product
+                                - destination_url = product.question.present? ? question_path(product.question, :anchor => product.id) : product.base_url
                                 = link_to destination_url do
-                                  span.description= product.description
-                          - questions.each do |question|
-                            li.question
-                              = link_to question_path(question) do
-                                ul
-                                  - question.products.each do |product|
-                                    li
-                                      .img
-                                        img src=product.image_variants.try(:[], :small)
-                              .user-info
-                                a href=users_questions_path(question.owner_name, question.owner_id)
-                                  img src=question.owner_avatar_url
-                                p
-                                  a.user-name href=users_questions_path(question.owner_name, question.owner_id) = question.owner_name
-                                  '  asked
+                                  .imgContainer
+                                    .img
+                                      img src=product.image_variants.try(:[],:large)
+                                .user-info
+                                  a href=users_questions_path(product.owner_name, product.owner_id)
+                                    img src=product.owner_avatar_url
+                                  p
+                                    a.user-name href=users_questions_path(product.owner_name, product.owner_id) = product.owner_name
+                                  ' rated up
+                                  = link_to destination_url do
+                                    span.description= product.description
+                            - questions.each do |question|
+                              li.question
                                 = link_to question_path(question) do
-                                  span.description= question.text
-                    tr height="10"
-                      td.headerContent align="left" style="border-top: 1px solid #CCCCCC"
+                                  ul
+                                    - question.products.each do |product|
+                                      li
+                                        .img
+                                          img src=product.image_variants.try(:[], :small)
+                                .user-info
+                                  a href=users_questions_path(question.owner_name, question.owner_id)
+                                    img src=question.owner_avatar_url
+                                  p
+                                    a.user-name href=users_questions_path(question.owner_name, question.owner_id) = question.owner_name
+                                    '  asked
+                                  = link_to question_path(question) do
+                                    span.description= question.text
+                      tr height="10"
+                        td.headerContent align="left" style="border-top: 1px solid #CCCCCC"
 
             table border="0" cellpadding="0" cellspacing="0" style="background-color:#FFFFFF;" width="600"
               tr

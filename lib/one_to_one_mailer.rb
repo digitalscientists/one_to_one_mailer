@@ -3,7 +3,7 @@ require 'uri'
 require 'slim'
 require 'action_mailer'
 require 'active_support/all'
-%w{version product question rateup related_items mailer}.each do |m|
+%w{version product question rateup related_items mailer user}.each do |m|
   require File.expand_path(File.dirname(__FILE__) + "/one_to_one_mailer/#{m}.rb")
 end
 

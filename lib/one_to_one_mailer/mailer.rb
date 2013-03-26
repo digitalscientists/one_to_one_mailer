@@ -4,14 +4,13 @@ module OneToOneMailer
 
 
     def related_products_mail user
-      related = RelatedItems.for_user(user.item_id)
 
-      products = related[:products]
-      rateups = related[:rateups]
-      questions = related[:questions]
+      products = user.related_items[:products]
+      rateups = user.related_items[:rateups]
+      questions = user.related_items[:questions]
 
-      scope = EmailData.new products, rateups, questions
-      mail(:to => user.email, :subject => "Looks from Rately. Featuring: #{related[:categories].join(', ')}") do |format|
+      scope = EmailData.new user.related_items[:products], user.related_items[:rateups], user.related_items[:questions]
+      mail(:to => user.email, :subject => "Looks from Rately. Featuring: #{user.related_items[:categories].join(', ')}") do |format|
         format.html do
           render :text => Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', 'related_products_mail.html.slim'), :disable_escape => true).render(scope)
         end
