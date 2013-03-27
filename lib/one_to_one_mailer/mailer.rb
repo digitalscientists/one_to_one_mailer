@@ -1,15 +1,13 @@
+require 'digest/sha1'
 module OneToOneMailer
   class Mailer < ActionMailer::Base
-    default from: "1to1@rately.com"
+    default from: "support@rately.com"
 
 
     def related_products_mail user
 
-      products = user.related_items[:products]
-      rateups = user.related_items[:rateups]
-      questions = user.related_items[:questions]
 
-      scope = EmailData.new user.related_items[:products], user.related_items[:rateups], user.related_items[:questions]
+      scope = EmailData.new user#.related_items[:products], user.related_items[:rateups], user.related_items[:questions]
       mail(:to => user.email, :subject => "Looks from Rately. Featuring: #{user.related_items[:categories].join(', ')}") do |format|
         format.html do
           render :text => Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', 'related_products_mail.html.slim'), :disable_escape => true).render(scope)
@@ -19,7 +17,16 @@ module OneToOneMailer
   end
 
 
-    class EmailData < Struct.new(:products, :rateups, :questions)
+    class EmailData < Struct.new(:user)
+      def products
+        user.related_items[:products]
+      end
+      def rateups
+        user.related_items[:rateups]
+      end
+      def questions
+        user.related_items[:questions]
+      end
       def question_path question, opts = {}
         path = "#{HOST}/questions/#{question.to_param}"
         path += "##{opts[:anchor]}"if opts[:anchor]
@@ -47,6 +54,18 @@ module OneToOneMailer
         stylesheets.map do |stylesheet|
           %Q{<link href="#{HOST}/stylesheets/#{stylesheet}" media="screen" rel="stylesheet" type="text/css">}
         end.join.html_safe
+      end
+
+      def email_token
+        Digest::SHA1.hexdigest "#{user.email}ratelysalt"
+      end
+
+      def unsubscribe_url
+        "#{HOST}/users/unsubscribe_related_items?email=#{user.email}&token=#{email_token}"
+      end
+
+      def settings_url
+        "#{HOST}/settings"
       end
     end
 end
