@@ -1,14 +1,14 @@
 require 'digest/sha1'
 module OneToOneMailer
   class Mailer < ActionMailer::Base
-    default from: "support@rately.com"
 
 
     def related_products_mail user
-
-
       scope = EmailData.new user#.related_items[:products], user.related_items[:rateups], user.related_items[:questions]
-      mail(:to => user.email, :subject => "Looks from Rately. Featuring: #{user.related_items[:categories].join(', ')}") do |format|
+      mail(
+        :from => 'Rately <support@rately.com>',
+        :to => user.email, 
+        :subject => "Looks from Rately. Featuring: #{user.related_items[:categories].join(', ')}") do |format|
         format.html do
           render :text => Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', 'related_products_mail.html.slim'), :disable_escape => true).render(scope)
         end
