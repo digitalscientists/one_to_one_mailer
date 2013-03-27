@@ -18,17 +18,11 @@ module OneToOneMailer
         end
       end
 
-      def request_related_products params, user
-        popular_items = popular_product_ids(params, user)
+      def request_related_products related_query
+        popular_items = popular_product_ids(related_query)
         Tire.search INDEX, :type => 'products', :size => 50 do
          q = query do
-            boolean do
-              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
-              must { terms :categories, params[:categories] }
-              should { terms :colors, params[:colors] }
-              should { terms :brand, params[:brands] } if params[:brands].any?
-              should { terms :sizes, params[:sizes] } if params[:sizes].any?
-            end
+            boolean &related_query
           end.to_hash
           q[:query][:bool][:should].push(
             { :custom_boost_factor => 
@@ -38,17 +32,11 @@ module OneToOneMailer
         end
       end
 
-      def request_related_questions params, user
-        popular_items = popular_question_ids(params, user)
+      def request_related_questions related_query
+        popular_items = popular_question_ids(related_query)
         Tire.search INDEX, :type => 'questions', :size => 30 do
          q = query do
-            boolean do
-              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
-              must { terms :categories, params[:categories] }
-              should { terms :colors, params[:colors] }
-              should { terms :brand, params[:brands] }
-              should { terms :sizes, params[:sizes] }
-            end
+            boolean &related_query
           end.to_hash
           q[:query][:bool][:should].push(
             { :custom_boost_factor => 
@@ -58,31 +46,19 @@ module OneToOneMailer
         end
       end
 
-      def request_related_rateups params, user
+      def request_related_rateups related_query
         Tire.search INDEX, :type => 'rateup', :size => 30 do
          q = query do
-            boolean do
-              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
-              must { terms :categories, params[:categories] }
-              should { terms :colors, params[:colors] }
-              should { terms :brand, params[:brands] }
-              should { terms :sizes, params[:sizes] }
-            end
+            boolean &related_query
           end.to_hash
           q
         end
       end
 
-      def popular_product_ids params, user
+      def popular_product_ids related_query
         pop = Tire.search INDEX, :type => 'question_product_view' do
           query do
-            boolean do
-              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
-              must { terms :categories, params[:categories] }
-              should { terms :colors, params[:colors] }
-              should { terms :brand, params[:brands] }
-              should { terms :sizes, params[:sizes] }
-            end
+            boolean &related_query
           end
 
           facet('popularity') { terms :item_id, :size => 100 }
@@ -99,16 +75,10 @@ module OneToOneMailer
         end
       end
 
-      def popular_question_ids params, user
+      def popular_question_ids related_query
         pop = Tire.search INDEX, :type => 'question_view' do
           query do
-            boolean do
-              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
-              must { terms :categories, params[:categories] }
-              should { terms :colors, params[:colors] }
-              should { terms :brand, params[:brands] }
-              should { terms :sizes, params[:sizes] }
-            end
+            boolean &related_query
           end
 
           facet('popularity') { terms :item_id, :size => 100 }
@@ -134,9 +104,17 @@ module OneToOneMailer
           :sizes => facets.results.facets['sizes']['terms'].map{|t| t['term']}
         }
 
-        products = request_related_products(params, user).results.to_a.uniq(&:original_image_url)[0...6]
-        questions = request_related_questions(params, user).results
-        rateups = request_related_rateups(params, user).results
+        related_query = lambda do |boolean|
+          boolean.must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
+          boolean.must { terms :categories, params[:categories] }
+          boolean.should { terms :colors, params[:colors] }
+          boolean.should { terms :brand, params[:brands] }
+          boolean.should { terms :sizes, params[:sizes] }
+        end
+
+        products = request_related_products(related_query).results.to_a.uniq(&:original_image_url)[0...6]
+        questions = request_related_questions(related_query).results
+        rateups = request_related_rateups(related_query).results
 
         if rateups.size < 6
           questions = questions[0...(12 - rateups.size)]
