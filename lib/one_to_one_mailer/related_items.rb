@@ -7,7 +7,7 @@ module OneToOneMailer
           query do
             boolean do
               must { term :user_id, user.id }
-              must { range :performed_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
+              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
             end
           end
 
@@ -62,7 +62,7 @@ module OneToOneMailer
         Tire.search INDEX, :type => 'rateup', :size => 30 do
          q = query do
             boolean do
-              must { range :performed_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
+              must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
               must { terms :categories, params[:categories] }
               should { terms :colors, params[:colors] }
               should { terms :brand, params[:brands] }
