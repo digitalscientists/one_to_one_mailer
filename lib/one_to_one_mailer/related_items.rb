@@ -12,6 +12,7 @@ module OneToOneMailer
           end
 
           facet('categories'){ terms :categories }
+          facet('domains'){ terms :domain }
           facet('colors'){ terms :colors }
           facet('brands'){ terms :brand }
           facet('sizes'){ terms :size }
@@ -99,6 +100,7 @@ module OneToOneMailer
         facets = user_facets user
         params = {
           :categories => facets.results.facets['categories']['terms'].map{|t| t['term']},
+          :domain => facets.results.facets['domains']['terms'].map{|t| t['term']},
           :colors => facets.results.facets['colors']['terms'].map{|t| t['term']},
           :brands => facets.results.facets['brands']['terms'].map{|t| t['term']},
           :sizes => facets.results.facets['sizes']['terms'].map{|t| t['term']}
@@ -107,6 +109,7 @@ module OneToOneMailer
         related_query = lambda do |boolean|
           boolean.must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
           boolean.must { terms :categories, params[:categories] }
+          boolean.should { terms :domain, params[:domain] }
           boolean.should { terms :colors, params[:colors] }
           boolean.should { terms :brand, params[:brands] }
           boolean.should { terms :sizes, params[:sizes] }
