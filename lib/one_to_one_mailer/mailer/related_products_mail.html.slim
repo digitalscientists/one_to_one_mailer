@@ -451,10 +451,10 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                     .img
                                       img src=product.image_variants.try(:[],:large)
                                 .user-info
-                                  a href=users_questions_path(product.owner_name, product.owner_id)
-                                    img src=product.owner_avatar_url
+                                  a href=users_questions_path(product.user_name, product.user_id)
+                                    img src=product.user_avatar_url
                                   p
-                                    a.user-name href=users_questions_path(product.owner_name, product.owner_id) = product.owner_name
+                                    a.user-name href=users_questions_path(product.user_name, product.user_id) = product.user_name
                                   ' rated up
                                   = link_to destination_url do
                                     span.description= product.description
@@ -467,10 +467,10 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                         .img
                                           img src=product.image_variants.try(:[], :small)
                                 .user-info
-                                  a href=users_questions_path(question.owner_name, question.owner_id)
-                                    img src=question.owner_avatar_url
+                                  a href=users_questions_path(question.user_name, question.user_id)
+                                    img src=question.user_avatar_url
                                   p
-                                    a.user-name href=users_questions_path(question.owner_name, question.owner_id) = question.owner_name
+                                    a.user-name href=users_questions_path(question.user_name, question.user_id) = question.user_name
                                     '  asked
                                   = link_to question_path(question) do
                                     span.description= question.text

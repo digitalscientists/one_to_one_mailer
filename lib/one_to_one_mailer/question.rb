@@ -41,16 +41,16 @@ module OneToOneMailer
       "#{@raw.slug}-#{id}" 
     end
 
-    def owner_id
-      @raw.owner_id
+    def user_id
+      @raw.user_id
     end
 
-    def owner_name
-      @raw.owner_name
+    def user_name
+      @raw.user_name
     end
 
-    def owner_avatar_url
-      @raw.owner_avatar_url
+    def user_avatar_url
+      @raw.user_avatar_url
     end
 
     def products
