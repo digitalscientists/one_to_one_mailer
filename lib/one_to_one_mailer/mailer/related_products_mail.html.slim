@@ -443,21 +443,21 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                       tr
                         td
                           ul.stream style="background-color: #fff"
-                            - rateups.select{|r| !r.product.nil? }.each do |product|
+                            - rateups.select{|r| !r.product.nil? }.each do |rateup|
                               li.product
-                                - destination_url = product.question.present? ? question_path(product.question, :anchor => product.id) : product.base_url
+                                - destination_url = rateup.question.present? ? question_path(rateup.question, :anchor => rateup.product_id) : rateup.base_url
                                 = link_to destination_url do
                                   .imgContainer
                                     .img
-                                      img src=product.image_variants.try(:[],:large)
+                                      img src=rateup.image_variants.try(:[],:large)
                                 .user-info
-                                  a href=users_questions_path(product.user_name, product.user_id)
-                                    img src=product.user_avatar_url
+                                  a href=users_questions_path(rateup.user_name, rateup.user_id)
+                                    img src=rateup.user_avatar_url
                                   p
-                                    a.user-name href=users_questions_path(product.user_name, product.user_id) = product.user_name
+                                    a.user-name href=users_questions_path(rateup.user_name, rateup.user_id) = rateup.user_name
                                   ' rated up
                                   = link_to destination_url do
-                                    span.description= product.description
+                                    span.description= rateup.description
                             - questions.each do |question|
                               li.question
                                 = link_to question_path(question) do

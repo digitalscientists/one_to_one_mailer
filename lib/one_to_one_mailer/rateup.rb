@@ -9,32 +9,32 @@ module OneToOneMailer
     end
 
     def self.load_questions rateups
-      rateup_ids = rateups.map(&:question_id)
-      raw_questions = Tire.search INDEX, :type => 'questions' do
+      question_ids = rateups.map(&:question_id)
+      raw_questions = Tire.search INDEX do
         query do
-          terms :item_id, rateup_ids
+          ids question_ids, 'questions'
         end
         sort { by :created_at, 'desc' }
       end.results
 
       rateups.each do |rateup|
-        raw_question = raw_questions.select { |rc| rc.item_id rateup.question_id }.first
+        raw_question = raw_questions.select { |rq| rq._id == rateup.question_id }.first
         rateup.instance_variable_set('@question', OneToOneMailer::Question.new(raw_question)) unless raw_question.nil?
       end
     end
 
     def self.load_products rateups
-      rateup_ids = rateups.map(&:id)
-      raw_questions = Tire.search INDEX, :type => 'products' do
+      product_ids = rateups.map(&:product_id)
+      raw_questions = Tire.search INDEX do
         query do
-          terms :item_id, rateup_ids
+          ids product_ids, 'products'
         end
         sort { by :created_at, 'desc' }
       end.results
 
       rateups.each do |rateup|
-        raw_product = raw_products.select { |rp| rp.item_id rateup.id }.first
-        rateup.instance_variable_set('@product', OneToOneMailer::Product.new(raw_question)) unless raw_product.nil?
+        raw_product = raw_products.select { |rp| rp._id == rateup.product_id }.first
+        rateup.instance_variable_set('@product', OneToOneMailer::Product.new(raw_product)) unless raw_product.nil?
       end
     end
 
@@ -67,11 +67,11 @@ module OneToOneMailer
     end
 
     def id
-      @raw.item_id
+      @raw._id
     end
 
-    def user_id
-      @raw.user_id
+    def product_id
+      @raw.product_id
     end
 
     def user_name
@@ -83,11 +83,11 @@ module OneToOneMailer
     end
 
     def question
-      item_id = @raw.item_id
+      item_id = @raw.question_id
       if @question.nil?
-        raw_question = Tire.search INDEX, :type => 'questions' do
+        raw_question = Tire.search INDEX do
           query do
-            term :item_id, item_id
+            ids [item_id], 'questions'
           end
           sort { by :created_at, 'desc' }
         end.results.first
@@ -98,11 +98,11 @@ module OneToOneMailer
     end
 
     def product
-      item_id = @raw.item_id
+      item_id = @raw.product_id
       if @product.nil?
-        raw_product = Tire.search INDEX, :type => 'products' do
+        raw_product = Tire.search INDEX do
           query do
-            term :item_id, item_id
+            ids [item_id], 'products'
           end
           sort { by :created_at, 'desc' }
         end.results.first

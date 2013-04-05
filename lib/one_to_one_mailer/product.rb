@@ -49,7 +49,7 @@ module OneToOneMailer
     end
 
     def id
-      @raw.item_id
+      @raw._id
     end
 
     def user_id
@@ -65,11 +65,11 @@ module OneToOneMailer
     end
 
     def question
-      item_id = @raw.item_id
+      item_id = @raw._id
       if @question.nil?
         raw_question = Tire.search INDEX, :type => 'questions' do
           query do
-            term :product_ids, item_id
+            ids [item_id], 'questions'
           end
           sort { by :created_at, 'desc' }
         end.results.first

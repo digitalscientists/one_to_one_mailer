@@ -13,9 +13,9 @@ module OneToOneMailer
 
     def self.load_products questions
       product_ids = questions.map{|q| q.raw.product_ids}.flatten.uniq
-      raw_products = Tire.search INDEX, :type => 'products', :size => product_ids.size do
+      raw_products = Tire.search INDEX, :size => product_ids.size do
         query do
-          terms :item_id, product_ids
+          ids product_ids, 'products'
         end
       end.results.to_a
       questions.each do |question|
@@ -34,7 +34,7 @@ module OneToOneMailer
     end
 
     def id
-      @raw.item_id
+      @raw._id
     end
 
     def to_param
@@ -56,9 +56,9 @@ module OneToOneMailer
     def products
       product_ids = @raw.product_ids
       if @products.nil?
-        raw_products = Tire.search INDEX, :type => 'products' do
+        raw_products = Tire.search INDEX do
           query do
-            terms :item_id, product_ids#.first
+            ids product_ids, 'products'
           end
         end.results
         @products = Product.read(raw_products)

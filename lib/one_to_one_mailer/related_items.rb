@@ -27,7 +27,7 @@ module OneToOneMailer
           end.to_hash
           q[:query][:bool][:should].push(
             { :custom_boost_factor => 
-              { :query => {:terms => {:item_id => popular_items}}, :boost_factor => 1.3 } }
+              { :query => {:ids => {:values => popular_items, :type => 'products'}}, :boost_factor => 1.3 } }
           ) if popular_items.any?
           q
         end
@@ -41,7 +41,7 @@ module OneToOneMailer
           end.to_hash
           q[:query][:bool][:should].push(
             { :custom_boost_factor => 
-              { :query => {:terms => {:item_id => popular_items}}, :boost_factor => 1.3 } }
+              { :query => {:ids => {:values => popular_items, :type => 'questions'}}, :boost_factor => 1.3 } }
           ) if popular_items.any?
           q
         end
@@ -62,7 +62,7 @@ module OneToOneMailer
             boolean &related_query
           end
 
-          facet('popularity') { terms :item_id, :size => 100 }
+          facet('popularity') { terms :product_id, :size => 100 }
         end
 
         popularity = pop.results.facets['popularity']['terms']
@@ -82,7 +82,7 @@ module OneToOneMailer
             boolean &related_query
           end
 
-          facet('popularity') { terms :item_id, :size => 100 }
+          facet('popularity') { terms :question_id, :size => 100 }
         end
 
         popularity = pop.results.facets['popularity']['terms']
