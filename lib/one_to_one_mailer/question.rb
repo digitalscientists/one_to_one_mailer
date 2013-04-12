@@ -13,9 +13,9 @@ module OneToOneMailer
 
     def self.load_products questions
       product_ids = questions.map{|q| q.raw.product_ids}.flatten.uniq
-      raw_products = Tire.search INDEX, :size => product_ids.size do
+      raw_products = Tire.search INDEX, :type => 'products', :size => product_ids.size do
         query do
-          ids product_ids, 'products'
+          terms :mongo_copy_id, product_ids
         end
       end.results.to_a
       questions.each do |question|

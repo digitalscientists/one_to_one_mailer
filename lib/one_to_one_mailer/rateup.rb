@@ -25,15 +25,15 @@ module OneToOneMailer
 
     def self.load_products rateups
       product_ids = rateups.map(&:product_id)
-      raw_questions = Tire.search INDEX do
+      raw_questions = Tire.search INDEX, :type => 'products' do
         query do
-          ids product_ids, 'products'
+          terms :mongo_copy_id, product_ids
         end
         sort { by :created_at, 'desc' }
       end.results
 
       rateups.each do |rateup|
-        raw_product = raw_products.select { |rp| rp._id == rateup.product_id }.first
+        raw_product = raw_products.select { |rp| rp.mongo_copy_id == rateup.product_id }.first
         rateup.instance_variable_set('@product', OneToOneMailer::Product.new(raw_product)) unless raw_product.nil?
       end
     end
@@ -42,8 +42,8 @@ module OneToOneMailer
       @raw = raw
     end
 
-    def image_variants
-      product.image_variants
+    def cdn_image
+      product.cdn_image
     end
 
     def user_id
@@ -100,9 +100,10 @@ module OneToOneMailer
     def product
       item_id = @raw.product_id
       if @product.nil?
-        raw_product = Tire.search INDEX do
+        raw_product = Tire.search INDEX, :type => 'products' do
           query do
-            ids [item_id], 'products'
+            #ids [item_id], 'products'
+            term :mongo_copy_id, item_id
           end
           sort { by :created_at, 'desc' }
         end.results.first

@@ -432,7 +432,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                 = link_to product.base_url do
                                   .imgContainer
                                     .img
-                                      img src=product.image_variants.try(:[],:large)
+                                      img src=product.cdn_image.try(:[], :large).try(:[], :url)
                     - if rateups.any? || questions.any?
                       tr
                         td
@@ -449,7 +449,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                 = link_to destination_url do
                                   .imgContainer
                                     .img
-                                      img src=rateup.image_variants.try(:[],:large)
+                                      img src=rateup.cdn_image.try(:[],:large).try(:[], :url)
                                 .user-info
                                   a href=users_questions_path(rateup.user_name, rateup.user_id)
                                     img src=rateup.user_avatar_url
@@ -465,7 +465,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                     - question.products.each do |product|
                                       li
                                         .img
-                                          img src=product.image_variants.try(:[], :small)
+                                          img src=product.crn_image.try(:[], :small).try(:[], :url)
                                 .user-info
                                   a href=users_questions_path(question.user_name, question.user_id)
                                     img src=question.user_avatar_url

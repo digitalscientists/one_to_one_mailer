@@ -28,8 +28,8 @@ module OneToOneMailer
       @raw = raw
     end
 
-    def image_variants
-      @raw.image_variants
+    def cdn_image
+      @raw.cdn_image
     end
 
     def user_id
@@ -54,14 +54,6 @@ module OneToOneMailer
 
     def user_id
       @raw.user_id
-    end
-
-    def user_name
-      @raw.user_name
-    end
-
-    def user_avatar_url
-      @raw.user_avatar_url
     end
 
     def question
