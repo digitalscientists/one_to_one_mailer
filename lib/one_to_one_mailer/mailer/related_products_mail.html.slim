@@ -465,7 +465,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                                     - question.products.each do |product|
                                       li
                                         .img
-                                          img src=product.crn_image.try(:[], :small).try(:[], :url)
+                                          img src=product.cdn_image.try(:[], :small).try(:[], :url)
                                 .user-info
                                   a href=users_questions_path(question.user_name, question.user_id)
                                     img src=question.user_avatar_url
