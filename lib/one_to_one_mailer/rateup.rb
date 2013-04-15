@@ -2,7 +2,7 @@ module OneToOneMailer
   class Rateup
     def self.read es_results, include_questions=true
       rateups = es_results.map { |rateup| new rateup }
-      if include_questions
+      if rateups.any? && include_questions
         load_questions rateups
       end
       rateups
