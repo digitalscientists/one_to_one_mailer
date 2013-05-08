@@ -445,7 +445,7 @@ html xmlns="http://www.w3.org/1999/xhtml" lang="en"
                           ul.stream style="background-color: #fff"
                             - rateups.select{|r| !r.product.nil? }.each do |rateup|
                               li.product
-                                - destination_url = rateup.question.present? ? question_path(rateup.question, :anchor => rateup.product_id) : rateup.base_url
+                                - destination_url = rateup.question.present? ? question_path(rateup.question, :anchor => rateup.mongo_product_id) : rateup.base_url
                                 = link_to destination_url do
                                   .imgContainer
                                     .img

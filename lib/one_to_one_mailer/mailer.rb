@@ -4,7 +4,7 @@ module OneToOneMailer
 
 
     def related_products_mail user
-      scope = EmailData.new user#.related_items[:products], user.related_items[:rateups], user.related_items[:questions]
+      scope = EmailData.new user
       mail(
         :from => 'Rately <support@rately.com>',
         :to => user.email, 

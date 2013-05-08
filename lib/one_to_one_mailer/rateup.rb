@@ -2,6 +2,7 @@ module OneToOneMailer
   class Rateup
     def self.read es_results, include_questions=true
       rateups = es_results.map { |rateup| new rateup }
+
       if rateups.any? && include_questions
         load_questions rateups
       end
@@ -25,9 +26,9 @@ module OneToOneMailer
 
     def self.load_products rateups
       product_ids = rateups.map(&:product_id)
-      raw_questions = Tire.search INDEX, :type => 'products' do
+      raw_questions = Tire.search INDEX do
         query do
-          terms :mongo_copy_id, product_ids
+          ids product_ids, 'products'
         end
         sort { by :created_at, 'desc' }
       end.results
@@ -74,6 +75,10 @@ module OneToOneMailer
       @raw.product_id
     end
 
+    def mongo_product_id
+      @raw.mongo_product_id
+    end
+
     def user_name
       @raw.user_name
     end
@@ -102,8 +107,7 @@ module OneToOneMailer
       if @product.nil?
         raw_product = Tire.search INDEX, :type => 'products' do
           query do
-            #ids [item_id], 'products'
-            term :mongo_copy_id, item_id
+            ids [item_id], 'products'
           end
           sort { by :created_at, 'desc' }
         end.results.first
@@ -116,6 +120,3 @@ module OneToOneMailer
 
   end
 end
-
-
-
