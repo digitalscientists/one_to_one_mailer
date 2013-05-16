@@ -29,7 +29,11 @@ module OneToOneMailer
     end
 
     def cdn_image
-      @raw.cdn_image
+      if @raw.original_cdn_image.present?
+        @raw.original_cdn_image
+      else
+        @raw.cdn_image
+      end
     end
 
     def user_id

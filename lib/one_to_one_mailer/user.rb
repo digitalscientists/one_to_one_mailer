@@ -49,7 +49,7 @@ module OneToOneMailer
     end
 
     def has_related_items?
-      products = related_items[:products].any? || related_items[:rateups].any? || related_items[:questions].any?
+      related_items[:products].any? || related_items[:rateups].any? || related_items[:questions].any?
     end
 
   end

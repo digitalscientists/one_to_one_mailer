@@ -5,7 +5,7 @@ module OneToOneMailer
 
     def self.read es_results, include_products=true
       questions = es_results.map { |question| new question }
-      if include_products
+      if include_products && questions.any?
         load_products questions
       end
       questions
