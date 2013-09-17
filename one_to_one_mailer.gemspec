@@ -19,8 +19,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'railsless-deploy'
   
   gem.add_runtime_dependency 'tire'
-  gem.add_runtime_dependency 'actionmailer'
-  gem.add_runtime_dependency 'activesupport'
+  gem.add_runtime_dependency 'actionmailer', '3.2.12'
+  gem.add_runtime_dependency 'activesupport', '3.2.12'
   gem.add_runtime_dependency 'slim'
 
 end

@@ -53,7 +53,7 @@ module OneToOneMailer
     end
 
     def id
-      @raw._id
+      @raw.id
     end
 
     def user_id
