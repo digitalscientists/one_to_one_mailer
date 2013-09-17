@@ -22,5 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'actionmailer', '3.2.12'
   gem.add_runtime_dependency 'activesupport', '3.2.12'
   gem.add_runtime_dependency 'slim'
+  gem.add_runtime_dependency 'whenever'
 
 end

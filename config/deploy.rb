@@ -11,6 +11,9 @@ set :port, '30306'
 role :app, "ec2-54-234-209-191.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
 set :branch, 'master'
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
