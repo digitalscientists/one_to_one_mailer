@@ -6,27 +6,26 @@ ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.asset_host = OneToOneMailer::HOST
 ActionMailer::Base.smtp_settings = OneToOneMailer::SMTP_SETTINGS
 
-ARGV.each do |a|
-  puts "Argument: #{a}"
-end
-
 User = Struct.new :item_id, :email
 
-def get_users from = 0
-  Tire.search(OneToOneMailer::INDEX, :type => 'user', :size => 100, :from => from) do
+def get_users page = 1
+  Tire.search(OneToOneMailer::INDEX, :type => 'user') do
     filter :exists, :field => :email
+    size 100
+    from 100*page
   end.results
 end
 
 
 
-i=0
+i = 1
 users = get_users
+
 while users.size > 0
   users.each do |raw_user|
     user = OneToOneMailer::User.new raw_user
     user.send_mail if user.should_send_mail?
   end
-  users = get_users(i * 100)
+  users = get_users(i)
   i += 1
 end
