@@ -1,0 +1,9 @@
+tr
+  td
+    ul.stream style="background-color: #fff"
+      - products.each do |product|
+        li.product.item
+          = link_to product.base_url do
+            .imgContainer
+              .img
+                img src=product.cdn_image.try(:[], :large).try(:[], :url)

@@ -1,0 +1,17 @@
+- questions.each do |question|
+  li.question
+    = link_to question_path(question) do
+      ul
+        - question.products.each do |product|
+          li
+            .img
+              img src=product.cdn_image.try(:[], :small).try(:[], :url)
+    .user-info
+      a href=users_questions_path(question.user_name, question.user_id)
+        img src=question.user_avatar_url
+      p
+        a.user-name href=users_questions_path(question.user_name, question.user_id) = question.user_name
+        '  asked
+      = link_to question_path(question) do
+        span.description= question.text
+

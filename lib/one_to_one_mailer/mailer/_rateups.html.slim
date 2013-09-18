@@ -1,0 +1,16 @@
+- rateups.select{|r| !r.product.nil? }.each do |rateup|
+  li.product
+    - destination_url = rateup.question.present? ? question_path(rateup.question, :anchor => rateup.mongo_product_id) : rateup.base_url
+    = link_to destination_url do
+      .imgContainer
+        .img
+          img src=rateup.cdn_image.try(:[],:large).try(:[], :url)
+    .user-info
+      a href=users_questions_path(rateup.user_name, rateup.user_id)
+        img src=rateup.user_avatar_url
+      p
+        a.user-name href=users_questions_path(rateup.user_name, rateup.user_id) = rateup.user_name
+      ' rated up
+      = link_to destination_url do
+        span.description= rateup.description
+
