@@ -105,7 +105,6 @@ module OneToOneMailer
           :brands => facets.results.facets['brands']['terms'].map{|t| t['term']},
           :sizes => facets.results.facets['sizes']['terms'].map{|t| t['term']}
         }
-
         related_query = lambda do |boolean|
           boolean.must { range :created_at, {:gte => (user.mail_sent_at || (Time.now - user.subscribtion_period).strftime('%Y%m%dT%H%M%SZ'))} }
           boolean.must { terms :'categories.default', params[:categories] } if params[:categories].any?

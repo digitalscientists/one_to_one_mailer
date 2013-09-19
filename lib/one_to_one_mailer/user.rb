@@ -32,12 +32,10 @@ module OneToOneMailer
         when 'Weekly' then 1.week
         when 'Monthly' then 1.month
       end
-      1.year
     end
 
     def should_send_mail?
       subscribed? && (mail_sent_at.nil? || Date.today >= (DateTime.parse(mail_sent_at) + subscribtion_period).to_date) && has_related_items?
-      subscribed?
     end
 
     def send_mail

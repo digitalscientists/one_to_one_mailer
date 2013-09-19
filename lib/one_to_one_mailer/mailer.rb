@@ -11,7 +11,6 @@ module OneToOneMailer
         :to => user.email, 
         :subject => "Looks from Rately. Featuring: #{user.related_items[:categories].join(', ')}") do |format|
 
-
         format.html do
           render :text => Template.new('related_products_mail.html.slim', scope).render
         end
