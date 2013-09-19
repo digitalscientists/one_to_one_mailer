@@ -6,4 +6,5 @@ tr
           = link_to product.base_url do
             .imgContainer
               .img
-                img src=product.cdn_image.try(:[], :large).try(:[], :url)
+                /img src=product.cdn_image.try(:[], :large).try(:[], :url)
+                img src=product.cdn_image.try(:[], :url)

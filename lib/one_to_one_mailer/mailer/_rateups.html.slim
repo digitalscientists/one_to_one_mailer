@@ -4,7 +4,8 @@
     = link_to destination_url do
       .imgContainer
         .img
-          img src=rateup.cdn_image.try(:[],:large).try(:[], :url)
+          /img src=rateup.cdn_image.try(:[],:large).try(:[], :url)
+          img src=rateup.cdn_image.try(:[],:url)
     table.user-info
       tr
         td

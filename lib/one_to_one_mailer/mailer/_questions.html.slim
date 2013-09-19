@@ -5,7 +5,8 @@
         - question.products.each do |product|
           li
             .img
-              img src=product.cdn_image.try(:[], :small).try(:[], :url)
+              /img src=product.cdn_image.try(:[], :small).try(:[], :url)
+              img src=product.cdn_image.try(:[], :url)
     table.user-info
       tr
         td
