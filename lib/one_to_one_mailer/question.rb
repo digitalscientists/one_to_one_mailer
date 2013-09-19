@@ -30,7 +30,7 @@ module OneToOneMailer
     end
 
     def text
-      @raw.text
+      @raw.text.to_s
     end
 
     def id

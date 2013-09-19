@@ -18,7 +18,7 @@ end
 
 
 
-i = 1
+i = 0
 users = get_users(i)
 
 while users.size > 0

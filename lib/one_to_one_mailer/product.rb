@@ -49,7 +49,7 @@ module OneToOneMailer
     end
 
     def description
-      @raw.title
+      @raw.title.to_s
     end
 
     def id

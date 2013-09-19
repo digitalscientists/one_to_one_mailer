@@ -37,7 +37,11 @@ css:
       border: 1px solid #ddd;
       background: white;
       margin: 8px;
-      position: relative; }
+      position: relative;
+      -moz-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+      }
       ul.stream > li > a {
         width: 300px;
         height: 300px;
@@ -86,6 +90,13 @@ css:
         overflow: hidden;
         padding: 10px 0 0; }
         ul.stream > li .user-info img {
+          height: 48px;
+          width: 48px;
+          float: left;
+          margin: 0 10px 10px 0; }
+        ul.stream > li .user-info .event-info {
+          width: 222px;
+          vertical-align: top;
           float: left;
           margin: 0 10px 10px 0; }
       ul.stream > li .user-name {

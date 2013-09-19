@@ -5,12 +5,19 @@
       .imgContainer
         .img
           img src=rateup.cdn_image.try(:[],:large).try(:[], :url)
-    .user-info
-      a href=users_questions_path(rateup.user_name, rateup.user_id)
-        img src=rateup.user_avatar_url
-      p
-        a.user-name href=users_questions_path(rateup.user_name, rateup.user_id) = rateup.user_name
-      ' rated up
-      = link_to destination_url do
-        span.description= rateup.description
+    table.user-info
+      tr
+        td
+          a href=users_questions_path(rateup.user_name, rateup.user_id)
+            img src=rateup.user_avatar_url
+        td.event-info
+          p
+            a.user-name href=users_questions_path(rateup.user_name, rateup.user_id) = rateup.user_name
+          ' rated up
+          = link_to destination_url do
+            span.description
+              = rateup.description.slice(0,50) 
+              - if rateup.description.length > 0
+                  | ...
+
 

@@ -13,7 +13,6 @@ module OneToOneMailer
 
 
         format.html do
-          #render :text => Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', 'related_products_mail.html.slim'), :disable_escape => true).render(scope)
           render :text => Template.new('related_products_mail.html.slim', scope).render
         end
       end
@@ -97,15 +96,5 @@ module OneToOneMailer
       def questions
         user.related_items[:questions]
       end
-
-      def common_styles
-        Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', '_common_styles.html.slim'), :disable_escape => true).render
-      end
-
-      def stream_styles
-        Slim::Template.new(File.join(File.dirname(__FILE__), 'mailer', '_stream_styles.html.slim'), :disable_escape => true).render
-      end
-
-
     end
 end
