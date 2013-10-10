@@ -21,3 +21,7 @@
 every 1.day do
   command "cd #{ File.expand_path(File.dirname(__FILE__) + "/../send_mails.rb")} && bundle exec ruby send_mails.rb staging"
 end
+
+every 1.day do
+  command "cd #{ File.expand_path(File.dirname(__FILE__) + "/../send_mails.rb")} && bundle exec ruby send_mails.rb production"
+end

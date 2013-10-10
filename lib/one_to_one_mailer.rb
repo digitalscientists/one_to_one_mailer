@@ -25,11 +25,15 @@ module OneToOneMailer
   }[env]
 
   SMTP_SETTINGS = {
+    :staging => {
+      :address => "localhost", 
+      :port => 1025
+    },
     :development => {
       :address => "localhost", 
       :port => 1025
     },
-    :staging => {
+    :staging1 => {
       :address   => "smtp.mandrillapp.com",
       :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
       :enable_starttls_auto => true, # detects and uses STARTTLS
