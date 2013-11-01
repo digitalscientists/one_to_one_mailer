@@ -14,6 +14,11 @@ set :branch, 'master'
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
+namespace :deploy do
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/keys #{release_path}/config/keys"
+  end
+end  
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
