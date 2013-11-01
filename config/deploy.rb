@@ -13,6 +13,7 @@ set :branch, 'master'
 
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
+after 'deploy:update_code', 'deploy:symlink_shared'
 
 namespace :deploy do
   task :symlink_shared do
