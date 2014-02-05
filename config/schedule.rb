@@ -25,3 +25,10 @@ end
 every 1.day do
   command "cd #{ File.expand_path(File.dirname(__FILE__) + "/../send_mails.rb")} && bundle exec ruby send_mails.rb production"
 end
+
+every :day, :at => '03:00am' do
+  pk = File.expand_path(File.dirname(__FILE__) + "/keys/pk-ZQOTEBVBV2J6MHNGJQOX45RU7I3HYQYG.pem")
+  cert = File.expand_path(File.dirname(__FILE__) + "/keys/cert-ZQOTEBVBV2J6MHNGJQOX45RU7I3HYQYG.pem")
+  command "/usr/local/ec2-api-tools-1.6.11.0/bin/ec2-create-snapshot -K #{pk} -C #{cert} vol-b26fb1c2"
+end
+
